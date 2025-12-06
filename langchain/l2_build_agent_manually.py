@@ -3,7 +3,6 @@ from langchain.tools import BaseTool
 from langchain.chat_models import BaseChatModel
 from helpers.llm_manager import get_llm_instance
 from langchain_core.messages import (
-    SystemMessage,
     AIMessage,
     ToolMessage,
     HumanMessage,
@@ -79,7 +78,7 @@ class AgentExecutor:
 
 if __name__ == "__main__":
 
-    llm = get_llm_instance("ollama")
+    llm = get_llm_instance()
     agent = Agent(llm=llm, tools=MATH_TOOLS)
     executor = AgentExecutor(agent=agent, tools=MATH_TOOLS)
 

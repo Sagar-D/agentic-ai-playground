@@ -1,9 +1,9 @@
-from langchain.agents.
+from langchain.agents.factory import create_agent
 from langchain_core.prompts import ChatPromptTemplate
 from tools.math_tools import MATH_TOOLS
 from helpers.llm_manager import get_llm_instance
 
-llm = get_llm_instance("ollama")
+llm = get_llm_instance()
 
 llm_with_tools = llm.bind_tools(MATH_TOOLS)
 
