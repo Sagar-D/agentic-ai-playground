@@ -4,3 +4,9 @@ langchain-core
 langchain-community
 langchain-ollama
 langchain-google-genai
+langchain_experimental
+kagglehub
+pandas
+openpyxl # pandas read excel
+tabulate # required for pandas agent
+matplotlib # for pandas agent to plot graphs
