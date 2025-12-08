@@ -12,11 +12,23 @@ sql_tool_kit = SQLDatabaseToolkit(llm=llm, db=db)
 
 print(f"Available tables: {db.get_usable_table_names()}")
 
+SYSTEM_PROMPT = """\
+You are a database query assistant.
+
+Your responsibilities:
+- You ONLY interact with the database through the provided tools.
+- You perform READ-ONLY queries. Never modify data.
+- You must translate the user’s request into the appropriate tool call.
+- After receiving the tool response, answer the user’s question clearly and concisely.
+- Do NOT invent information that is not returned by the tool.
+- If the requested data does not exist, say so.
+
+Always use the tools for factual answers."""
+
 sql_agent = create_agent(
     model=llm,
     tools=sql_tool_kit.get_tools(),
-    system_prompt="""You are a helpful database query assistant.
-You perform read only operations on datbase using the tools provided and answer user queries."""
+    system_prompt=SYSTEM_PROMPT
 )
 
 if __name__ == "__main__" :
