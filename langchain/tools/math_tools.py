@@ -1,4 +1,5 @@
 from langchain.tools import tool
+from langchain_core.tools.base import BaseToolkit
 
 @tool
 def add_numbers(inputs:str) -> str :
@@ -94,3 +95,11 @@ def divide(inputs: str) -> str:
     return str(float(num.strip()) / float(den.strip()))
 
 MATH_TOOLS = [add_numbers, subtract_numbers, multiply_numbers, divide]
+
+
+## Creating a toolkit class that can be used to organize tools
+
+class MathToolkit(BaseToolkit) :
+
+    def get_tools(self):
+        return MATH_TOOLS
