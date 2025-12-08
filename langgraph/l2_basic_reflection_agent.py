@@ -49,8 +49,11 @@ Rules:
 - Do NOT give compliments or mention what is good.
 - Focus ONLY on problems and how to improve them.
 - Be specific, sharp, and concise.
-- If the email is already fully appropriate and requires no changes, respond ONLY with: LOOKS GOOD
-- Your output must contain only critique or the phrase LOOKS GOOD.
+- If the email is already fully appropriate and requires no changes, respond ONLY with: 'LOOKS GOOD'
+- Your output must contain only critique or the phrase 'LOOKS GOOD'.
+
+IMPORTANT NOTE 
+- If the email is already fully appropriate and requires no changes, respond ONLY with: 'LOOKS GOOD'
 """
 
 reflector_prompt_template = ChatPromptTemplate.from_messages(
@@ -93,8 +96,10 @@ def reflex_exit_condition(state: ReflexState) -> str :
     if state['iteration_counter'] == MAX_ITERATION_FOR_REFLECTION :
         return "ABORT"
     message_count = len(state["messages"])
-    if message_count > 2 and "LOOKS GOOD" in str(state["messages"][-2]).upper() :
-        return "ABORT"
+    if message_count > 2 :
+        curr_message = str(state["messages"][-2]).upper()
+        if curr_message.strip() == "" or "LOOKS GOOD" in curr_message :
+            return "ABORT"
     return "CONTINUE"
 
 reflex_graph = StateGraph(ReflexState)
