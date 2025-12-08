@@ -66,7 +66,7 @@ General Rules:
 - NEVER answer directly from your own knowledge.
 - NEVER skip a tool. Always follow the 3-step sequence above. DO NOT SKIP ANY STEP.
 - If the database tool returns no meaningful result, inform the user instead of generating facts.
-- Output compination of reponses from both music_database_agent response and final interesting facts in the below format.
+- Output combination of reponses from both music_database_agent response and final interesting facts in the below format.
 
 Response Format :
 `

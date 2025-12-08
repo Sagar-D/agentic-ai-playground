@@ -11,3 +11,4 @@ openpyxl # pandas read excel
 tabulate # required for pandas agent
 matplotlib # for pandas agent to plot graphs
 wikipedia # for wikipidea agent/tool
+grandalf # for drawing ascii graphs (langgraph visualizer)
