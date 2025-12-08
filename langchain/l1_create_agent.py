@@ -10,13 +10,13 @@ llm_with_tools = llm.bind_tools(MATH_TOOLS)
 agent = create_agent(
     model=llm_with_tools,
     tools=MATH_TOOLS,
-    system_prompt="You are a helpful math assistant. You help solve the problems given by user. Use the tools when neccessary."
+    system_prompt="You are a helpful math assistant. You help solve the problems given by user. Use the tools when neccessary.",
 )
 
 while True:
+    print("--" * 30)
     user_prompt = input("User Query : ")
-    response = agent.invoke({"input": user_prompt})
+    response = agent.invoke({"messages": [{"role": "user", "content": user_prompt}]})
 
-    print("--"*30)
-    print(f"\n\nAgent Response : {response}")
-
+    print("--" * 30)
+    print(f"Agent Response : {response['messages'][-1].content}")
